@@ -6,10 +6,6 @@
 -- 2015/02/14 sza2 <sza2trash@gmail.com> Fix for negative values
 --------------------------------------------------------------------------------
 
--- Set module name as parameter of require
-local modname = ...
-local M = {}
-_G[modname] = M
 --------------------------------------------------------------------------------
 -- Local used variables
 --------------------------------------------------------------------------------
@@ -28,8 +24,8 @@ local string = string
 local ow = ow
 -- Timer module
 local tmr = tmr
--- Limited to local environment
-setfenv(1,M)
+
+module(...)
 --------------------------------------------------------------------------------
 -- Implementation
 --------------------------------------------------------------------------------
@@ -133,6 +129,3 @@ function read(addr, unit)
     return t
   end
 end
-
--- Return module table
-return M
